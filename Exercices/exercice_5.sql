@@ -52,6 +52,8 @@ VALUES  ('1', '1', '2023-01-01', '1', 1),
         ('10', '1', '2023-01-01', '3', 5),
         ('11', '2', '2022-07-15', '3', 6);
 
+truncate table assignments cascade;
+
 SELECT staff.fname, staff.lname -- You can add other staff attributes here
 FROM staff
 INNER JOIN have_qualif ON staff.staff_code = have_qualif.staff_staff_code
