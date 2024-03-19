@@ -1,0 +1,45 @@
+-- For each staff member give total flight hours per month of last year (2023)
+INSERT INTO public.month_periods (year_period, month_period)
+VALUES 
+(2022, 01),
+(2022, 02),
+(2022, 03),
+(2022, 04),
+(2022, 05),
+(2022, 06),
+(2022, 07),
+(2022, 08),
+(2022, 09),
+(2022, 10),
+(2022, 11),
+(2022, 12),
+(2023, 01),
+(2023, 02),
+(2023, 03),
+(2023, 04),
+(2023, 05),
+(2023, 06),
+(2023, 07),
+(2023, 08),
+(2023, 09),
+(2023, 10),
+(2023, 11),
+(2023, 12),
+(2024, 01),
+(2024, 02),
+(2024, 03);
+
+SELECT
+    STAFF_STAFF_CODE AS STAFF_CODE,
+    YEAR_PERIODS_YEAR_PERIOD AS YEAR,
+    MONTH_PERIODS_MONTH_PERIOD AS MONTH,
+    SUM(HOURS_NBR) AS HOURS
+FROM in_flight
+WHERE YEAR_PERIODS_YEAR_PERIOD = '2023'
+GROUP BY
+    STAFF_STAFF_CODE,
+    YEAR_PERIODS_YEAR_PERIOD,
+    MONTH_PERIODS_MONTH_PERIOD
+ORDER BY
+    STAFF_STAFF_CODE,
+    MONTH_PERIODS_MONTH_PERIOD;
