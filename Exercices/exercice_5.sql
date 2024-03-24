@@ -1,5 +1,3 @@
-
-
 INSERT INTO QUALIFICATIONS (qualif_code, qualif_name, qualif_dscr)
 VALUES ('1', 'Pilot', 'Pilote'),
        ('2', 'Flight Attendant', 'Hotesse de lair'),
@@ -42,8 +40,6 @@ VALUES
     ('2', 'Bravo'),
     ('3', 'Charlie');
 
-
-
 INSERT INTO ASSIGNMENTS (staff_staff_code, crews_crew_code, starting, roles_role_code, assignt_nbr)
 VALUES  ('1', '1', '2023-01-01', '1', 1),
         ('2', '2', '2022-07-15', '1', 2),
@@ -54,12 +50,12 @@ VALUES  ('1', '1', '2023-01-01', '1', 1),
 
 truncate table assignments cascade;
 
-SELECT staff.fname, staff.lname -- You can add other staff attributes here
+SELECT staff.fname, staff.lname
 FROM staff
 INNER JOIN have_qualif ON staff.staff_code = have_qualif.staff_staff_code
 INNER JOIN qualifications ON have_qualif.qualifications_qualif_code = qualifications.qualif_code
 INNER JOIN ASSIGNMENTS ON staff.staff_code = ASSIGNMENTS.staff_staff_code
-WHERE qualifications.qualif_name = 'Pilot'  -- Filter for Pilot qualification
-  AND EXTRACT(YEAR FROM ASSIGNMENTS.starting) = 2023; -- Filter for assignments in 2023
+WHERE qualifications.qualif_name = 'Pilot'
+  AND EXTRACT(YEAR FROM ASSIGNMENTS.starting) = 2023;
 
 
